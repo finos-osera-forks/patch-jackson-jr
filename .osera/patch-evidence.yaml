@@ -1,7 +1,7 @@
 # Licensed under the Apache License, Version 2.0: https://www.apache.org/licenses/LICENSE-2.0
 schema: osera-patch-evidence/0.1.0
 producer: moderne
-release: 2.13.5.1-osera-00014
+release: 2.13.5.1-osera-00015
 baseline: v2.13.5+patch.baseline
 fixes:
   - cve: CVE-2025-52999
@@ -160,12 +160,11 @@ fixes:
     artifacts:
       - com.fasterxml.jackson.core:jackson-core
       - com.fasterxml.jackson.jr:jackson-jr-all
-    note: New in this release; ported onto 2.13.5; fixed at 2.13.5.1-backpatch-00014 (backpatch-jackson-core@58bfacd).
+    note: Carried from 2.13.5.1-backpatch-00014; ported onto 2.13.5; fixed at 2.13.5.1-backpatch-00014 (backpatch-jackson-core@58bfacd).
 tests:
-  commit: 66c3010247ab8291cb18a237223f395d88f3daf8
-  command: JAVA_HOME=<jdk-8> mvn -B -Dmaven.repo.local=<local repository holding this release's jackson-core> -Djackson.version.core=2.13.5.1-osera-00014 -Dmaven.javadoc.skip=true -Denforcer.skip=true -Dgpg.skip=true clean test
-  runtime: Azul Zulu (Java 1.8.0_382), Apache Maven 3.9.16, macOS aarch64
-  report: jackson-jr-all-2.13.5.1-osera-00014-tests.zip
-  report_sha256: bb77a646cc708aca8662db6311762538ec028c33eeac647d333ce75710de5e6b
+  commit: 409d0cd086eabf7daee55cec3ca62c200b7dad3d
+  command: none in this repository
+  runtime: none, no build or test ran for this release
+  report: carried, see the evidence of the release named in the note
   result: pass
-  note: jackson-jr 2.13.5's suite at its release tag, 145 run, 0 failed, 0 errors, 0 skipped, against this release's jackson-core; jackson-jr-all is rebuilt from that tag with this release's jackson-core shaded in, its 127 classes under com/fasterxml/jackson/jr/private_ are identical to this release's jackson-core classes after the shade relocation, and every other entry equals Central's jackson-jr-all 2.13.5 but for the version metadata; the fixes' own tests are recorded by moderne-backpatch-alliance/backpatch-jackson-core at v2.13.5.1-backpatch-00014
+  note: this release changes nothing in this repository, nothing ran here; its test provenance is jackson-2.13 2.13.5.1-osera-00015 in finos-osera-forks/patch-jackson-bom at v2.13.5.1-osera-00015, whose .osera/patch-evidence.yaml records the tests that ran
